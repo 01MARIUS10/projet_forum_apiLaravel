@@ -15,6 +15,8 @@ class CreateUsersProfilsTable extends Migration
     {
         Schema::create('users_profils', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('pseudo');
             $table->string('adress');
             $table->string('work');
             $table->string('school');
