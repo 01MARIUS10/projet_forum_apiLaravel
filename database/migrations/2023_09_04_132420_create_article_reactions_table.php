@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersAuthTable extends Migration
+class CreateArticleReactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUsersAuthTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_auth', function (Blueprint $table) {
+        Schema::create('article_reactions', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignId('user_id')->constrained('user_profils');
+            // $table->foreignId('article_id')->constrained('articles');
+            $table->foreignId('reactionType_id')->constrained('reaction_types');
+
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUsersAuthTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('article_reactions');
     }
 }
