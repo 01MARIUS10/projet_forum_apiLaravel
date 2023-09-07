@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserAuth;
+use App\Models\File;
 use Illuminate\Database\Seeder;
 
-class UserAuthSeeder extends Seeder
+class FileSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,7 @@ class UserAuthSeeder extends Seeder
      */
     public function run()
     {
-        UserAuth::factory()->count(4)->create();
+        File::factory()->count(15)->create();
+        //
     }
 }

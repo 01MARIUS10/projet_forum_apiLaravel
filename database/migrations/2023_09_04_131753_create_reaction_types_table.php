@@ -13,7 +13,7 @@ class CreateReactionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reactionTypes', function (Blueprint $table) {
+        Schema::create('reaction_types', function (Blueprint $table) {
             $table->id();
             $table->integer('type');
             $table->timestamps();

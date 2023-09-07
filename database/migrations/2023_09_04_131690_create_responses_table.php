@@ -16,7 +16,7 @@ class CreateResponsesTable extends Migration
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('user_id')->constrained('userProfils');
+            $table->foreignId('user_id')->constrained('user_profils');
             $table->text('content');
             $table->foreignId('image_id')->constrained('images');
 

@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Image;
-use App\Models\UserAuth;
+use App\Models\Question;
+use App\Models\UserProfil;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserProfilFactory extends Factory
+class ResponseFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,11 +17,9 @@ class UserProfilFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'adress' => $this->faker->address(),
-            'work' => $this->faker->word(1),
-            'school' => $this->faker->streetName(),
-            "auth_id" => UserAuth::inRandomOrder()->first(),
+            "user_id" => UserProfil::factory(),
+            "question_id" => Question::inRandomOrder()->first(),
+            "content" => $this->faker->sentence(20),
             "image_id" => Image::inRandomOrder()->first()
             //
         ];

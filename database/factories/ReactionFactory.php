@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Question;
 use App\Models\ReactionType;
+use App\Models\Response;
 use App\Models\UserProfil;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ArticleReactionFactory extends Factory
+class ReactionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,7 +18,8 @@ class ArticleReactionFactory extends Factory
     public function definition()
     {
         return [
-            'article_id' => \App\Models\Article::inRandomOrder()->first(),
+            'question_id' => Question::inRandomOrder()->first(),
+            'response_id' => Response::inRandomOrder()->first(),
             'user_id' => UserProfil::inRandomOrder()->first(),
             'reactionType_id' => ReactionType::inRandomOrder()->first()
             //

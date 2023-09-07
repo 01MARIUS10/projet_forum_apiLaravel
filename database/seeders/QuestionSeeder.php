@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\ArticleCategories;
+use App\Models\Question;
 use Illuminate\Database\Seeder;
 
-class ArticleCategorieSeeder extends Seeder
+class QuestionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ArticleCategorieSeeder extends Seeder
      */
     public function run()
     {
-        ArticleCategories::factory()->count(5)->create();
+        Question::factory()->count(15)->create();
         //
     }
 }

@@ -2,21 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\BelongsToRelationship;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleCommentaires extends Model
+class QuestionCategories extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'content'
+        'categorie'
     ];
-    public function user()
-    {
-        return $this->belongsTo(UserProfil::class);
-    }
     public function article()
     {
-        return $this->belongsTo(Article::class);
+        return $this->hasMany(Article::class, 'categorie_id');
     }
 }

@@ -15,10 +15,10 @@ class CreateReactionsTable extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('userProfils');
+            $table->foreignId('user_id')->constrained('user_profils');
             $table->foreignId('question_id')->constrained('questions');
             $table->foreignId('response_id')->constrained('responses');
-            $table->foreignId('reactionType_id')->constrained('reactionTypes');
+            $table->foreignId('reactionType_id')->constrained('reaction_types');
 
             $table->timestamps();
         });

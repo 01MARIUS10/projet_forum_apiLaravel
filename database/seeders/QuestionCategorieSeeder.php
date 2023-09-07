@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\ArticleCommentaires;
+use App\Models\QuestionCategories;
 use Illuminate\Database\Seeder;
 
-class ArticleCommentairesSeeder extends Seeder
+class QuestionCategorieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ArticleCommentairesSeeder extends Seeder
      */
     public function run()
     {
-        ArticleCommentaires::factory()->count(20)->create();
+        QuestionCategories::factory()->count(5)->create();
         //
     }
 }

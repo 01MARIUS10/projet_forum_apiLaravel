@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\ArticleReaction;
+use App\Models\Response;
 use Illuminate\Database\Seeder;
 
-class ArticleReactionSeeder extends Seeder
+class ResponseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ArticleReactionSeeder extends Seeder
      */
     public function run()
     {
-        ArticleReaction::factory()->count(12)->create();
+        Response::factory()->count(20)->create();
         //
     }
 }

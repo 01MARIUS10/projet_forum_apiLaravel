@@ -13,7 +13,7 @@ class CreateUsersAuthTable extends Migration
      */
     public function up()
     {
-        Schema::create('userAuths', function (Blueprint $table) {
+        Schema::create('user_auths', function (Blueprint $table) {
             $table->id();
             $table->string('pseudo');
             $table->string('email')->unique();

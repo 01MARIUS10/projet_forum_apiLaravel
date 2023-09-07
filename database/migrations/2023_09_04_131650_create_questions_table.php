@@ -16,8 +16,8 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained('userProfils');
-            $table->foreignId('categorie_id')->constrained('questionCategories');
+            $table->foreignId('user_id')->constrained('user_profils');
+            $table->foreignId('categorie_id')->constrained('question_categories');
 
             $table->text('content');
             $table->foreignId('image_id')->constrained('images');

@@ -13,7 +13,7 @@ class CreateQuestionCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionCategories', function (Blueprint $table) {
+        Schema::create('question_categories', function (Blueprint $table) {
             $table->id();
             $table->string('categorie');
             $table->timestamps();
