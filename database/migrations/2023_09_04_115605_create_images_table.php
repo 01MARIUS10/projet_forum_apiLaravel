@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignkeyArticleReactionsTables extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddForeignkeyArticleReactionsTables extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('article_reactions', function (Blueprint $table) {
-            $table->foreignId('article_id')->constrained('articles');
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->string('label');
+            $table->string('desc');
+            $table->string('src');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +29,6 @@ class AddForeignkeyArticleReactionsTables extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('article_reactions', function (Blueprint $table) {
-            $table->dropForeign(['article_id']);
-        });
+        Schema::dropIfExists('image');
     }
 }

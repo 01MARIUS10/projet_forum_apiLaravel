@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticleReactionsTable extends Migration
+class CreateReactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateArticleReactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_reactions', function (Blueprint $table) {
+        Schema::create('reactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('user_profils');
-            // $table->foreignId('article_id')->constrained('articles');
-            $table->foreignId('reactionType_id')->constrained('reaction_types');
+            $table->foreignId('user_id')->constrained('userProfils');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->foreignId('response_id')->constrained('responses');
+            $table->foreignId('reactionType_id')->constrained('reactionTypes');
 
             $table->timestamps();
         });

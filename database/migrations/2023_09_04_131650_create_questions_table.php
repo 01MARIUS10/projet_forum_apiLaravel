@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticlesTable extends Migration
+class CreateQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained('user_profils');
-            $table->foreignId('categorie_id')->constrained('article_categories');
+            $table->foreignId('user_id')->constrained('userProfils');
+            $table->foreignId('categorie_id')->constrained('questionCategories');
 
             $table->text('content');
+            $table->foreignId('image_id')->constrained('images');
             $table->timestamps();
         });
     }

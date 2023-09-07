@@ -13,15 +13,14 @@ class CreateUsersProfilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_profils', function (Blueprint $table) {
+        Schema::create('userProfils', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('pseudo');
             $table->string('adress');
             $table->string('work');
             $table->string('school');
-            $table->foreignId('auth_id')->constrained('user_auths');
-
+            $table->foreignId('auth_id')->constrained('userAuths');
+            $table->foreignId('image_id')->constrained('images');
             $table->timestamps();
         });
     }

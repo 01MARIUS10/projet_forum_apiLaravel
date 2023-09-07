@@ -13,8 +13,9 @@ class CreateUsersAuthTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_auths', function (Blueprint $table) {
+        Schema::create('userAuths', function (Blueprint $table) {
             $table->id();
+            $table->string('pseudo');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
