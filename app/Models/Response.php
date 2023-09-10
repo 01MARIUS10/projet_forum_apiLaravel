@@ -15,8 +15,16 @@ class Response extends Model
     {
         return $this->belongsTo(UserProfil::class);
     }
-    public function article()
+    public function question()
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Question::class);
+    }
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
+    public function reaction()
+    {
+        return $this->hasMany(Reaction::class);
     }
 }

@@ -17,7 +17,7 @@ class CreateChatsTable extends Migration
             $table->id();
             $table->text('text');
             $table->foreignId('from_id')->constrained('user_profils');
-            $table->foreignId('to_id')->constrained('user_auths');
+            $table->foreignId('to_id')->constrained('user_profils');
             $table->foreignId('file_id')->constrained('files');
             $table->foreignId('image_id')->constrained('images');
             $table->timestamps();

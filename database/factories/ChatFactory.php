@@ -18,15 +18,15 @@ class ChatFactory extends Factory
     {
         $to = UserProfil::inRandomOrder()->first();
         $from = '';
-        while ($to == $from) {
+        do {
             $from = UserProfil::inRandomOrder()->first();
-        }
+        } while ($to == $from);
         return [
             'text' => $this->faker->sentence(2),
             'from_id' => $to,
             'to_id' => $from,
-            "image_id" => Image::inRandomOrder()->first(),
-            "file_id" => File::inRandomOrder()->first()
+            "image_id" => Image::factory(),
+            "file_id" => File::factory()
             //
         ];
     }

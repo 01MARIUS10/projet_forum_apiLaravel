@@ -20,8 +20,9 @@ class UserProfilFactory extends Factory
             'adress' => $this->faker->address(),
             'work' => $this->faker->word(1),
             'school' => $this->faker->streetName(),
-            "auth_id" => UserAuth::inRandomOrder()->first(),
-            "image_id" => Image::inRandomOrder()->first()
+            // "auth_id" => UserAuth::inRandomOrder()->first(),
+            "auth_id" => UserAuth::factory(),
+            "image_id" => Image::factory()
             //
         ];
     }

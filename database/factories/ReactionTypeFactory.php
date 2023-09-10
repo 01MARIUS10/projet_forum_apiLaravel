@@ -14,7 +14,7 @@ class ReactionTypeFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->randomNumber(1)
+            // 'type' => $this->faker->randomNumber(1)
             //
         ];
     }

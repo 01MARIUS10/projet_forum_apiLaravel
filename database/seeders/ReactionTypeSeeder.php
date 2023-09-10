@@ -14,7 +14,10 @@ class ReactionTypeSeeder extends Seeder
      */
     public function run()
     {
-        ReactionType::factory()->count(10)->create();
+        for ($i = 0; $i < 5; $i++) {
+            ReactionType::create(['type' => $i]);
+        }
+        // ReactionType::factory()->count(10)->create();
         //
     }
 }

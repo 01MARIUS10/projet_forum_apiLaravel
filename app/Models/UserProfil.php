@@ -15,20 +15,32 @@ class UserProfil extends Model
         'work',
         'school',
     ];
-    public function user_auth()
+    public function userAuth()
     {
         return $this->belongsTo(UserAuth::class);
     }
-    public function article_commentaire()
+    public function image()
     {
-        return $this->hasMany(ArticleCommentaires::class, 'user_id');
+        return $this->belongsTo(Image::class);
     }
-    public function article()
+    public function chatSending()
     {
-        return $this->hasMany(Article::class, 'user_id');
+        return $this->hasMany(Chat::class, 'from_id');
     }
-    public function article_reaction()
+    public function chatReceived()
     {
-        return $this->hasMany(ArticleReaction::class, 'user_id');
+        return $this->hasMany(Chat::class, 'to_id');
+    }
+    public function question()
+    {
+        return $this->hasMany(Question::class, 'user_id');
+    }
+    public function reaction()
+    {
+        return $this->hasMany(Reaction::class, 'user_id');
+    }
+    public function response()
+    {
+        return $this->hasMany(Response::class, 'user_id');
     }
 }

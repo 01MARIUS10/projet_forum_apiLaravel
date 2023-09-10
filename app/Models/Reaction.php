@@ -12,11 +12,15 @@ class Reaction extends Model
     {
         return $this->belongsTo(UserProfil::class);
     }
-    public function article()
+    public function question()
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Question::class);
     }
-    public function reaction()
+    public function response()
+    {
+        return $this->belongsTo(Response::class);
+    }
+    public function type()
     {
         return $this->belongsTo(ReactionType::class);
     }

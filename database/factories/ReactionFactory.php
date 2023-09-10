@@ -17,9 +17,10 @@ class ReactionFactory extends Factory
      */
     public function definition()
     {
+        $bool = rand(0, 1);
         return [
-            'question_id' => Question::inRandomOrder()->first(),
-            'response_id' => Response::inRandomOrder()->first(),
+            'question_id' => $bool ? null : Question::inRandomOrder()->first(),
+            'response_id' => $bool ? Response::inRandomOrder()->first() : null,
             'user_id' => UserProfil::inRandomOrder()->first(),
             'reactionType_id' => ReactionType::inRandomOrder()->first()
             //

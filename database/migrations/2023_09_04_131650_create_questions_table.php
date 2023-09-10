@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->foreignId('categorie_id')->constrained('question_categories');
 
             $table->text('content');
-            $table->foreignId('image_id')->constrained('images');
+            $table->foreignId('image_id')->nullable()->constrained('images');
             $table->timestamps();
         });
     }
@@ -34,6 +34,7 @@ class CreateQuestionsTable extends Migration
     {
         $table->dropForeign('articles_user_id_foreign');
         $table->dropForeign('articles_categorie_id_foreign');
+        $table->dropForeign(['image_id']);
         Schema::dropIfExists('articles');
     }
 }

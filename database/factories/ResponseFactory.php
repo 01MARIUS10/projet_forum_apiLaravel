@@ -20,7 +20,7 @@ class ResponseFactory extends Factory
             "user_id" => UserProfil::factory(),
             "question_id" => Question::inRandomOrder()->first(),
             "content" => $this->faker->sentence(20),
-            "image_id" => Image::inRandomOrder()->first()
+            "image_id" => Image::factory()
             //
         ];
     }

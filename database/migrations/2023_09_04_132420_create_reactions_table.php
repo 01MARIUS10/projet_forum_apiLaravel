@@ -15,9 +15,9 @@ class CreateReactionsTable extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('question_id')->nullable()->constrained('questions');
+            $table->foreignId('response_id')->nullable()->constrained('responses');
             $table->foreignId('user_id')->constrained('user_profils');
-            $table->foreignId('question_id')->constrained('questions');
-            $table->foreignId('response_id')->constrained('responses');
             $table->foreignId('reactionType_id')->constrained('reaction_types');
 
             $table->timestamps();
@@ -29,8 +29,11 @@ class CreateReactionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(Blueprint $table)
     {
+        $table->dropForeign(['question_id']);
+        $table->dropForeign(['response_id']);
+        $table->dropForeign(['user_id']);
         Schema::dropIfExists('article_reactions');
     }
 }

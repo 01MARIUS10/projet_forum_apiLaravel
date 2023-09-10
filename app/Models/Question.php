@@ -9,23 +9,30 @@ class Question extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'content'
+        'content',
+        'categorie_id',
+        'user_id',
+        'image_id'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(UserProfil::class, 'user_id');
     }
     public function categorie()
     {
-        return $this->belongsTo(ArticleCategories::class);
+        return $this->belongsTo(QuestionCategories::class);
+    }
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
     }
     public function reaction()
     {
-        return $this->hasMany(ArticleReaction::class, 'article_id');
+        return $this->hasMany(Reaction::class, 'question_id');
     }
-    public function commentaire()
+    public function response()
     {
-        return $this->hasMany(ArticleCommentaires::class, 'article_id');
+        return $this->hasMany(Response::class, 'question_id');
     }
 }

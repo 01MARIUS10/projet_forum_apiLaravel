@@ -29,8 +29,9 @@ class CreateResponsesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(Blueprint $table)
     {
+        $table->dropForeign(['question_id']);
         Schema::dropIfExists('article_commentaires');
     }
 }

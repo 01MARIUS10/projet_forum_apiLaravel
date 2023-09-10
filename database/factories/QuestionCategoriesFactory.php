@@ -14,7 +14,7 @@ class QuestionCategoriesFactory extends Factory
     public function definition()
     {
         return [
-            'categorie' => $this->faker->word(1)
+            // 'categorie' => $this->faker->word(1)
             //
         ];
     }
