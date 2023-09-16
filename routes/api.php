@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UsersController;
 use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,12 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    return response()->json("hello");
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::prefix('/auth')->group(function () {
+    Route::post('/login', [UsersController::class, 'login'])->name('auth.login');
+    Route::post('/signin', [UsersController::class, 'signin'])->name('auth.signin');
+});
 
 Route::prefix('/questions')->group(function () {
+
     Route::get('/', [QuestionController::class, 'index']);
     Route::post('/', [QuestionController::class, 'store']);
     Route::get('/{id}', [QuestionController::class, 'show']);

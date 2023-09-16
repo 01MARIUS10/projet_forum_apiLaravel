@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+// 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
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

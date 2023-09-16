@@ -20,7 +20,7 @@ class CreateUsersProfilsTable extends Migration
             $table->string('work');
             $table->string('school');
             $table->foreignId('auth_id')->constrained('user_auths');
-            $table->foreignId('image_id')->constrained('images');
+            $table->foreignId('image_id')->nullable()->constrained('images');
             $table->timestamps();
         });
     }

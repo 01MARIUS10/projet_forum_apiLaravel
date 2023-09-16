@@ -17,7 +17,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $question = Question::all();
+        $question = Question::with('categorie')->paginate(5);
         return response()->json([
             'status' => 'success',
             'message' => "liste des questionnaires ",
@@ -40,7 +40,7 @@ class QuestionController extends Controller
             'categorie_id' => $request->input('categorie_id'),
             'content' => $request->input('content')
         ]);
-        $q = Question::where('user_id', (int)$request->input('user_id'));
+        $q = Question::where('user_id', (int)$request->input('user_id'))->with('categorie');
         return response()->json([
             'status' => 'success',
             'message' => "question enregistrer  ",
