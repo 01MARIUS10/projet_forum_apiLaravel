@@ -8,17 +8,33 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AuthentificationRequest;
 use App\Models\UserProfil;
+use Exception;
 
 class UsersController extends Controller
 {
     public function login(AuthentificationRequest $request)
     {
-        // dd($request->all());
-        $credential = $request->validated();
-        if (Auth::attempt($credential)) {
-            dd(Auth::user());
-        } else {
-            dd('nemany');
+        try {
+            $credential = $request->validated();
+            if (Auth::attempt($credential)) {
+                /** @var userAuth $user */
+                $user = Auth::user();
+                $token = '';
+                $token = $user->createToken('forum')->plainTextToken;
+                return response()->json([
+                    'user' => $user,
+                    'token' => $token
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'error' => 'login lost'
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e
+            ]);
         }
     }
     public function signin(AuthentificationRequest $request)
@@ -36,7 +52,27 @@ class UsersController extends Controller
         $userProfil->school = $request->input('school');
         $userProfil->auth_id = $user->id;
         $userProfil->save();
-        dd($userProfil);
+
+        $token = $user->createToken('forum')->plainTextToken;
+        return response()->json([
+            'user' => $user,
+            'profil' => $userProfil,
+            'token' => $token
+        ]);
+    }
+    public function logout(Request $request)
+    {
+        try {
+            /** @var UserAuth $user */
+            $user = $request->user();
+            $user->currentAccessToken()->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'logout successful'
+            ], 204);
+        } catch (Exception $e) {
+            return $e;
+        }
     }
     //
 }

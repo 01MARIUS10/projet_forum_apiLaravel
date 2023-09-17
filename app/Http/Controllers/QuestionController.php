@@ -58,9 +58,16 @@ class QuestionController extends Controller
     {
         $q = Question::where('id', $id)
             ->with(['user', 'categorie', 'image'])->get();
+        if ($q) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'la question id:' . $id,
+                'data' => $q
+            ]);
+        }
         return response()->json([
-            'status' => 'success',
-            'message' => 'la question id:' . $id,
+            'status' => 'error',
+            'message' => 'la question id:' . $id . "n'existe pas",
             'data' => $q
         ]);
         //

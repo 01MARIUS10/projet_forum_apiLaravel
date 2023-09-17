@@ -21,39 +21,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function () {
-    return response()->json("hello");
-});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::prefix('/auth')->group(function () {
     Route::post('/login', [UsersController::class, 'login'])->name('auth.login');
     Route::post('/signin', [UsersController::class, 'signin'])->name('auth.signin');
 });
 
-Route::prefix('/questions')->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::post('/logout', [UsersController::class, 'logout'])->name('auth.logout');
 
-    Route::get('/', [QuestionController::class, 'index']);
-    Route::post('/', [QuestionController::class, 'store']);
-    Route::get('/{id}', [QuestionController::class, 'show']);
-    Route::post('/{id}', [QuestionController::class, 'update']);
-    Route::delete('/{id}', [QuestionController::class, 'destroy']);
-});
+    Route::prefix('/questions')->group(function () {
+        Route::get('/', [QuestionController::class, 'index']);
+        Route::post('/', [QuestionController::class, 'store']);
+        Route::get('/{id}', [QuestionController::class, 'show']);
+        Route::post('/{id}', [QuestionController::class, 'update']);
+        Route::delete('/{id}', [QuestionController::class, 'destroy']);
+    });
 
-Route::prefix('/messages')->group(function () {
-    Route::get('/', [ChatController::class, 'index']);
-    Route::post('/', [ChatController::class, 'store']);
-    Route::get('/{id}', [ChatController::class, 'show']);
-    Route::post('/{id}', [ChatController::class, 'update']);
-    Route::delete('/{id}', [ChatController::class, 'destroy']);
-});
+    Route::prefix('/messages')->group(function () {
+        Route::get('/', [ChatController::class, 'index']);
+        Route::post('/', [ChatController::class, 'store']);
+        Route::get('/{id}', [ChatController::class, 'show']);
+        Route::post('/{id}', [ChatController::class, 'update']);
+        Route::delete('/{id}', [ChatController::class, 'destroy']);
+    });
 
-Route::prefix('/profils')->group(function () {
-    Route::get('/', [ProfilController::class, 'index']);
-    Route::post('/', [ProfilController::class, 'store']);
-    Route::get('/{id}', [ProfilController::class, 'show']);
-    Route::post('/{id}', [ProfilController::class, 'update']);
-    Route::delete('/{id}', [ProfilController::class, 'destroy']);
+    Route::prefix('/profils')->group(function () {
+        Route::get('/', [ProfilController::class, 'index']);
+        Route::post('/', [ProfilController::class, 'store']);
+        Route::get('/{id}', [ProfilController::class, 'show']);
+        Route::post('/{id}', [ProfilController::class, 'update']);
+        Route::delete('/{id}', [ProfilController::class, 'destroy']);
+    });
 });
