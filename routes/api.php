@@ -23,15 +23,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/auth')->group(function () {
-    Route::post('/login', [UsersController::class, 'login'])->name('auth.login');
-    Route::post('/signin', [UsersController::class, 'signin'])->name('auth.signin');
+    Route::post('/login', [AuthenticateController::class, 'login'])->name('auth.login');
+    Route::post('/signin', [AuthenticateController::class, 'signin'])->name('auth.signin');
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::post('/logout', [UsersController::class, 'logout'])->name('auth.logout');
+    Route::post('/logout', [AuthenticateController::class, 'logout'])->name('auth.logout');
 
     Route::prefix('/questions')->group(function () {
         Route::get('/', [QuestionController::class, 'index']);

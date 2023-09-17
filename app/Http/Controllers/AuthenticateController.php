@@ -10,7 +10,7 @@ use App\Http\Requests\AuthentificationRequest;
 use App\Models\UserProfil;
 use Exception;
 
-class UsersController extends Controller
+class AuthenticateController extends Controller
 {
     public function login(AuthentificationRequest $request)
     {
